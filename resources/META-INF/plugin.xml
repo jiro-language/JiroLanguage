@@ -28,6 +28,8 @@
     <!-- Add your extensions here -->
     <fileTypeFactory implementation="jirolanguage.JiroFileTypeFactory"/>
     <lang.parserDefinition language="JiroLanguage" implementationClass="jirolanguage.JiroParserDefinition"/>
+    <lang.syntaxHighlighterFactory key="JiroLanguage" implementationClass="jirolanguage.JiroSyntaxHighlighterFactory"/>
+    <colorSettingsPage implementation="jirolanguage.JiroColorSettingsPage"/>
   </extensions>
 
   <actions>
