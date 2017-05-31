@@ -1,0 +1,32 @@
+{
+  parserClass="jirolanguage.parser.JiroParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Jiro"
+  psiImplClassSuffix="Impl"
+  psiPackage="jirolanguage.psi"
+  psiImplPackage="jirolanguage.psi.impl"
+
+  elementTypeHolderClass="jirolanguage.psi.JiroTypes"
+  elementTypeClass="jirolanguage.psi.JiroElementType"
+  tokenTypeClass="jirolanguage.psi.JiroTokenType"
+
+//  psiImplUtilClass="jirolanguage.psi.impl.JiroPsiImplUtil"
+}
+
+//jiroFile ::= (property|COMMENT)*
+//
+//property ::= (KEY SEPARATOR VALUE?)|KEY {
+//    pin=3
+//    recoverWhile="recover_property"
+//    mixin="jirolanguage.psi.impl.JiroNamedElementImpl"
+//    implements="jirolanguageugin.psi.JiroNamedElement"
+//    methods=[getKey getValue getName setName getNameIdentifier getPresentation]
+//}
+//
+//private recover_property ::= !(KEY|SEPARATOR|COMMENT)
+
+jiroFile ::= item_*
+private item_ ::= (property|COMMENT|CRLF)
+property ::= (KEY? SEPARATOR VALUE?) | KEY

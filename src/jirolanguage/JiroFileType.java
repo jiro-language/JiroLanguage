@@ -20,13 +20,13 @@ public class JiroFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getName() {
-        return "Jiro file";
+        return "JiroLanguage file";
     }
 
     @NotNull
     @Override
     public String getDescription() {
-        return "Jiro language file";
+        return "JiroLanguage file";
     }
 
     @NotNull

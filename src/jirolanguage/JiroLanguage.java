@@ -10,7 +10,7 @@ public class JiroLanguage extends Language {
     public static final JiroLanguage INSTANCE = new JiroLanguage();
 
     private JiroLanguage() {
-        super("Jiro Language");
+        super("JiroLanguage");
     }
 
 }
