@@ -15,11 +15,15 @@ import com.intellij.psi.TokenType;
 %eof{  return;
 %eof}
 
+LINE_TERMINATOR = \r|\n|\r\n
+//COMMENT_CONTENT = ( [^*] | \*+ [^/*] )*
+
 CRLF=\R
 WHITE_SPACE=[\ \n\t\f]
 FIRST_VALUE_CHARACTER=[^ \n\f\\] | "\\"{CRLF} | "\\".
 VALUE_CHARACTER=[^\n\f\\] | "\\"{CRLF} | "\\".
-END_OF_LINE_COMMENT=("#"|"!")[^\r\n]*
+END_OF_LINE_COMMENT="//" [^\r\n]* {LINE_TERMINATOR}?
+//DOC_COMMENT ="/**" {COMMENT_CONTENT} "*/" {LINE_TERMINATOR}?
 SEPARATOR=[:=]
 KEY_CHARACTER=[^:=\ \n\t\f\\] | "\\ "
 
@@ -28,6 +32,7 @@ KEY_CHARACTER=[^:=\ \n\t\f\\] | "\\ "
 %%
 
 <YYINITIAL> {END_OF_LINE_COMMENT}                           { yybegin(YYINITIAL); return JiroTypes.COMMENT; }
+//<YYINITIAL> {DOC_COMMENT}                                   { yybegin(YYINITIAL); return JiroTypes.DOC_COMMENT; }
 
 <YYINITIAL> {KEY_CHARACTER}+                                { yybegin(YYINITIAL); return JiroTypes.KEY; }
 

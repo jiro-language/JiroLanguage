@@ -11,6 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
+/**
+ * Syntax Highlight
+ */
 public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey SEPARATOR =
@@ -21,6 +24,9 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
             createTextAttributesKey("JIRO_VALUE", DefaultLanguageHighlighterColors.STRING);
     public static final TextAttributesKey COMMENT =
             createTextAttributesKey("JIRO_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
+    // TODO できてない
+//    public static final TextAttributesKey DOC_COMMENT =
+//            createTextAttributesKey("JIRO_DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT);
     public static final TextAttributesKey BAD_CHARACTER =
             createTextAttributesKey("JIRO_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
@@ -29,6 +35,7 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TextAttributesKey[] KEY_KEYS = new TextAttributesKey[]{KEY};
     private static final TextAttributesKey[] VALUE_KEYS = new TextAttributesKey[]{VALUE};
     private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
+//    private static final TextAttributesKey[] DOC_COMMENT_KEYS = new TextAttributesKey[]{DOC_COMMENT};
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
     @NotNull
@@ -48,6 +55,8 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
             return VALUE_KEYS;
         } else if (tokenType.equals(JiroTypes.COMMENT)) {
             return COMMENT_KEYS;
+//        } else if (tokenType.equals(JiroTypes.DOC_COMMENT)) {
+//            return DOC_COMMENT_KEYS;
         } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
             return BAD_CHAR_KEYS;
         } else {
