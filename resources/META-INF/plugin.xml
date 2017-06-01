@@ -25,13 +25,18 @@
   -->
 
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
+    <!--File Types-->
     <fileTypeFactory implementation="jirolanguage.JiroFileTypeFactory"/>
+    <!--Parser-->
     <lang.parserDefinition language="JiroLanguage" implementationClass="jirolanguage.JiroParserDefinition"/>
+    <!--Colors-->
     <lang.syntaxHighlighterFactory key="JiroLanguage" implementationClass="jirolanguage.JiroSyntaxHighlighterFactory"/>
     <colorSettingsPage implementation="jirolanguage.JiroColorSettingsPage"/>
+    <!--Live Template-->
     <defaultLiveTemplatesProvider implementation="jirolanguage.liveTemplate.JiroTemplateProvider"/>
     <liveTemplateContext implementation="jirolanguage.liveTemplate.JiroContext"/>
+    <!--Commenter-->
+    <lang.commenter language="JiroLanguage" implementationClass="jirolanguage.JiroCommenter"/>
   </extensions>
 
   <actions>
