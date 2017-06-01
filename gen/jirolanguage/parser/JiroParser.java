@@ -3,11 +3,11 @@ package jirolanguage.parser;
 
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
-import static jirolanguage.psi.JiroTypes.*;
+
 import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
+import static jirolanguage.psi.JiroTypes.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.tree.TokenSet;
 import com.intellij.lang.PsiParser;
 import com.intellij.lang.LightPsiParser;
 
@@ -63,14 +63,14 @@ public class JiroParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (KEY? SEPARATOR VALUE?) | KEY
+  // (KEY? SEPARATOR VALUE?) | KEY KEY
   public static boolean property(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property")) return false;
     if (!nextTokenIs(b, "<property>", KEY, SEPARATOR)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, PROPERTY, "<property>");
     r = property_0(b, l + 1);
-    if (!r) r = consumeToken(b, KEY);
+    if (!r) r = parseTokens(b, 0, KEY, KEY);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

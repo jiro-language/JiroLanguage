@@ -11,7 +11,6 @@ public interface JiroTypes {
   IElementType PROPERTY = new JiroElementType("PROPERTY");
 
   IElementType COMMENT = new JiroTokenType("COMMENT");
-//  IElementType DOC_COMMENT = new JiroElementType("DOC_COMMENT");
   IElementType CRLF = new JiroTokenType("CRLF");
   IElementType KEY = new JiroTokenType("KEY");
   IElementType SEPARATOR = new JiroTokenType("SEPARATOR");

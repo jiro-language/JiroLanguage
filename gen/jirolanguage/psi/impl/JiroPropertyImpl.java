@@ -26,4 +26,12 @@ public class JiroPropertyImpl extends ASTWrapperPsiElement implements JiroProper
     else super.accept(visitor);
   }
 
+  public String getKey() {
+    return JiroPsiImplUtil.getKey(this);
+  }
+
+  public String getValue() {
+    return JiroPsiImplUtil.getValue(this);
+  }
+
 }
