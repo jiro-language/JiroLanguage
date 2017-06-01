@@ -18,24 +18,29 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey SEPARATOR =
             createTextAttributesKey("JIRO_SEPARATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN);
-    public static final TextAttributesKey KEY =
-            createTextAttributesKey("JIRO_KEY", DefaultLanguageHighlighterColors.KEYWORD);
+    public static final TextAttributesKey JIRO =
+            createTextAttributesKey("JIRO_JIRO", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey VALUE =
             createTextAttributesKey("JIRO_VALUE", DefaultLanguageHighlighterColors.STRING);
-    public static final TextAttributesKey COMMENT =
+    public static final TextAttributesKey BRACKETS =
+            createTextAttributesKey("JIRO_BRACKETS", DefaultLanguageHighlighterColors.BRACKETS);
+    public static final TextAttributesKey LINE_COMMENT =
             createTextAttributesKey("JIRO_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
-    // TODO できてない
-//    public static final TextAttributesKey DOC_COMMENT =
-//            createTextAttributesKey("JIRO_DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT);
+    public static final TextAttributesKey DOC_COMMENT =
+            createTextAttributesKey("JIRO_DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT);
+    public static final TextAttributesKey BLOCK_COMMENT =
+            createTextAttributesKey("JIRO_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
     public static final TextAttributesKey BAD_CHARACTER =
             createTextAttributesKey("JIRO_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
     private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
     private static final TextAttributesKey[] SEPARATOR_KEYS = new TextAttributesKey[]{SEPARATOR};
-    private static final TextAttributesKey[] KEY_KEYS = new TextAttributesKey[]{KEY};
+    private static final TextAttributesKey[] JIRO_KEYS = new TextAttributesKey[]{JIRO};
+    private static final TextAttributesKey[] BRACKETS_KEYS = new TextAttributesKey[]{BRACKETS};
     private static final TextAttributesKey[] VALUE_KEYS = new TextAttributesKey[]{VALUE};
-    private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
-//    private static final TextAttributesKey[] DOC_COMMENT_KEYS = new TextAttributesKey[]{DOC_COMMENT};
+    private static final TextAttributesKey[] LINE_COMMENT_KEYS = new TextAttributesKey[]{LINE_COMMENT};
+    private static final TextAttributesKey[] DOC_COMMENT_KEYS = new TextAttributesKey[]{DOC_COMMENT};
+    private static final TextAttributesKey[] BLOCK_COMMENT_KEYS = new TextAttributesKey[]{BLOCK_COMMENT};
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
     @NotNull
@@ -49,14 +54,20 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
         if (tokenType.equals(JiroTypes.SEPARATOR)) {
             return SEPARATOR_KEYS;
-        } else if (tokenType.equals(JiroTypes.KEY)) {
-            return KEY_KEYS;
         } else if (tokenType.equals(JiroTypes.VALUE)) {
             return VALUE_KEYS;
-        } else if (tokenType.equals(JiroTypes.COMMENT)) {
-            return COMMENT_KEYS;
-//        } else if (tokenType.equals(JiroTypes.DOC_COMMENT)) {
-//            return DOC_COMMENT_KEYS;
+        } else if (tokenType.equals(JiroTypes.BRACKETS1)) {
+            return BRACKETS_KEYS;
+        } else if (tokenType.equals(JiroTypes.BRACKETS2)) {
+            return BRACKETS_KEYS;
+        } else if (tokenType.equals(JiroTypes.LINE_COMMENT)) {
+            return LINE_COMMENT_KEYS;
+        } else if (tokenType.equals(JiroTypes.DOC_COMMENT)) {
+            return DOC_COMMENT_KEYS;
+        } else if (tokenType.equals(JiroTypes.BLOCK_COMMENT)) {
+            return BLOCK_COMMENT_KEYS;
+        } else if (tokenType.equals(JiroTypes.SWITCH)) {
+            return JIRO_KEYS;
         } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
             return BAD_CHAR_KEYS;
         } else {

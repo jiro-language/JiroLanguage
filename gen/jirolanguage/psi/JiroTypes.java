@@ -10,12 +10,16 @@ public interface JiroTypes {
 
   IElementType PROPERTY = new JiroElementType("PROPERTY");
 
-  IElementType COMMENT = new JiroTokenType("COMMENT");
-//  IElementType DOC_COMMENT = new JiroElementType("DOC_COMMENT");
+  IElementType BLOCK_COMMENT = new JiroTokenType("BLOCK_COMMENT");
+  IElementType BRACKETS1 = new JiroTokenType("BRACKETS1");
+  IElementType BRACKETS2 = new JiroTokenType("BRACKETS2");
   IElementType CRLF = new JiroTokenType("CRLF");
-  IElementType KEY = new JiroTokenType("KEY");
+  IElementType DOC_COMMENT = new JiroTokenType("DOC_COMMENT");
+  IElementType LINE_COMMENT = new JiroTokenType("LINE_COMMENT");
   IElementType SEPARATOR = new JiroTokenType("SEPARATOR");
+  IElementType SWITCH = new JiroTokenType("SWITCH");
   IElementType VALUE = new JiroTokenType("VALUE");
+  IElementType WHITE_SPACE = new JiroTokenType("WHITE_SPACE");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {

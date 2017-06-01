@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 public class JiroParserDefinition implements ParserDefinition {
 
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(JiroTypes.COMMENT);
+    public static final TokenSet LINE_COMMENTS = TokenSet.create(JiroTypes.LINE_COMMENT);
 
     public static final IFileElementType FILE = new IFileElementType(JiroLanguage.INSTANCE);
 
@@ -30,7 +30,7 @@ public class JiroParserDefinition implements ParserDefinition {
 
     @NotNull
     public TokenSet getCommentTokens() {
-        return COMMENTS;
+        return LINE_COMMENTS;
     }
 
     @NotNull

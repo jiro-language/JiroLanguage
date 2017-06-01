@@ -14,9 +14,13 @@ import java.util.Map;
 public class JiroColorSettingsPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("Key", JiroSyntaxHighlighter.KEY),
             new AttributesDescriptor("Separator", JiroSyntaxHighlighter.SEPARATOR),
             new AttributesDescriptor("Value", JiroSyntaxHighlighter.VALUE),
+            new AttributesDescriptor("Line Comment", JiroSyntaxHighlighter.LINE_COMMENT),
+            new AttributesDescriptor("Block Comment", JiroSyntaxHighlighter.BLOCK_COMMENT),
+            new AttributesDescriptor("Jiro", JiroSyntaxHighlighter.JIRO),
+            new AttributesDescriptor("Brackets1", JiroSyntaxHighlighter.BRACKETS),
+            new AttributesDescriptor("Brackets2", JiroSyntaxHighlighter.BRACKETS),
     };
 
     @Nullable

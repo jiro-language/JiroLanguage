@@ -28,5 +28,5 @@
 //private recover_property ::= !(KEY|SEPARATOR|COMMENT)
 
 jiroFile ::= item_*
-private item_ ::= (property|COMMENT|CRLF)
-property ::= (KEY? SEPARATOR VALUE?) | KEY
+private item_ ::= (property|LINE_COMMENT|BLOCK_COMMENT|DOC_COMMENT|CRLF)
+property ::= (SEPARATOR VALUE?) | (SWITCH WHITE_SPACE? BRACKETS1 WHITE_SPACE? BRACKETS2) | (WHITE_SPACE? BRACKETS1 WHITE_SPACE?) | BRACKETS2

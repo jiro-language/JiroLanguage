@@ -38,24 +38,26 @@ class JiroLexer implements FlexLexer {
   /** 
    * Translates characters to character classes
    * Chosen bits are [9, 6, 6]
-   * Total runtime size is 1568 bytes
+   * Total runtime size is 2592 bytes
    */
   public static int ZZ_CMAP(int ch) {
-    return ZZ_CMAP_A[(ZZ_CMAP_Y[ZZ_CMAP_Z[ch>>12]|((ch>>6)&0x3f)]<<6)|(ch&0x3f)];
+    return ZZ_CMAP_A[(ZZ_CMAP_Y[(ZZ_CMAP_Z[ch>>12]<<6)|((ch>>6)&0x3f)]<<6)|(ch&0x3f)];
   }
 
   /* The ZZ_CMAP_Z table has 272 entries */
   static final char ZZ_CMAP_Z[] = zzUnpackCMap(
-    "\1\0\1\100\1\200\u010d\100");
+    "\1\0\1\1\1\2\1\3\1\1\1\4\11\1\1\5\u0100\1");
 
-  /* The ZZ_CMAP_Y table has 192 entries */
+  /* The ZZ_CMAP_Y table has 384 entries */
   static final char ZZ_CMAP_Y[] = zzUnpackCMap(
-    "\1\0\1\1\1\2\175\3\1\4\77\3");
+    "\1\0\1\1\1\2\175\3\1\4\100\3\1\5\1\6\1\7\101\3\1\10\166\3\1\11\3\3");
 
-  /* The ZZ_CMAP_A table has 320 entries */
+  /* The ZZ_CMAP_A table has 640 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\0\1\4\1\2\1\3\1\5\1\1\22\0\1\7\16\0\1\10\12\0\1\11\2\0\1\11\36\0\1\6\50"+
-    "\0\1\3\242\0\2\3\26\0");
+    "\11\0\1\6\1\2\1\5\1\7\1\1\22\0\1\11\7\0\1\13\1\14\1\3\4\0\1\4\12\0\1\12\2"+
+    "\0\1\12\36\0\1\10\36\0\1\15\1\0\1\16\7\0\1\5\242\0\2\5\41\0\1\26\15\0\1\25"+
+    "\44\0\1\24\15\0\1\23\42\0\1\21\33\0\1\17\47\0\1\20\61\0\1\22\71\0\1\27\40"+
+    "\0");
 
   /** 
    * Translates DFA states to action switch labels.
@@ -63,11 +65,13 @@ class JiroLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\2\0\2\1\1\2\1\3\1\1\1\4\2\5\2\6"+
-    "\1\3\1\6\1\0\1\7\1\0\1\2\2\5\5\7";
+    "\2\0\1\1\1\2\1\1\1\3\3\1\2\4\2\5"+
+    "\1\1\1\5\1\0\1\6\4\0\1\2\2\4\2\0"+
+    "\1\7\1\10\4\0\1\11\2\10\1\0\1\11\1\0"+
+    "\1\12\1\0\2\11\2\0\2\11\2\12\5\0\1\13";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[25];
+    int [] result = new int[54];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -92,13 +96,16 @@ class JiroLexer implements FlexLexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\12\0\24\0\36\0\50\0\62\0\74\0\106"+
-    "\0\120\0\132\0\50\0\144\0\156\0\170\0\62\0\202"+
-    "\0\156\0\132\0\214\0\226\0\240\0\106\0\252\0\264"+
-    "\0\276";
+    "\0\0\0\30\0\60\0\110\0\140\0\60\0\170\0\220"+
+    "\0\250\0\300\0\330\0\110\0\360\0\u0108\0\u0120\0\u0138"+
+    "\0\u0150\0\u0168\0\u0180\0\u0198\0\u0108\0\330\0\u01b0\0\u01c8"+
+    "\0\u01e0\0\u01f8\0\60\0\u0210\0\u0228\0\u0240\0\u0258\0\u0270"+
+    "\0\u0288\0\u02a0\0\60\0\u02b8\0\u02d0\0\u02e8\0\u0300\0\u0318"+
+    "\0\u0330\0\u0318\0\u0348\0\u0360\0\u0378\0\60\0\u0390\0\60"+
+    "\0\u03a8\0\u03c0\0\u03d8\0\u03f0\0\u0408\0\60";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[25];
+    int [] result = new int[54];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -121,24 +128,34 @@ class JiroLexer implements FlexLexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\3\1\4\1\5\1\4\2\5\1\6\1\5\1\7"+
-    "\1\10\1\11\1\12\1\13\1\12\1\14\1\13\1\15"+
-    "\1\16\2\11\2\3\1\0\1\3\2\0\1\17\1\0"+
-    "\1\3\1\0\1\3\1\4\1\5\1\4\2\5\1\17"+
-    "\1\5\1\3\2\0\5\5\1\0\1\5\11\0\1\3"+
-    "\2\0\2\3\1\0\1\3\2\0\1\17\1\0\1\20"+
-    "\13\0\2\11\1\0\2\11\1\0\1\21\4\11\1\22"+
-    "\1\5\2\22\1\5\1\21\1\22\3\11\1\23\1\16"+
-    "\1\23\1\14\1\16\1\21\1\14\3\11\1\24\10\11"+
-    "\1\0\1\5\1\16\1\5\2\16\1\0\1\16\2\0"+
-    "\1\20\1\25\1\26\1\20\2\27\1\30\1\27\1\20"+
-    "\1\27\1\11\1\23\1\5\2\23\1\5\1\21\1\23"+
-    "\7\11\1\0\1\21\3\11\2\3\1\26\1\3\2\0"+
-    "\1\17\1\0\1\3\1\0\1\27\1\31\1\26\10\27"+
-    "\1\31\1\26\4\27\1\20\2\27\2\0\1\26\7\0";
+    "\1\3\2\4\1\3\1\5\3\4\1\3\1\4\1\6"+
+    "\1\7\1\3\1\10\1\3\1\11\10\3\1\12\1\13"+
+    "\1\14\2\12\1\13\1\15\1\14\1\16\1\17\16\12"+
+    "\31\0\2\4\2\0\3\4\1\0\1\4\21\0\1\20"+
+    "\1\21\23\0\1\22\2\0\3\22\2\0\1\22\1\0"+
+    "\1\22\2\0\13\22\16\23\1\0\11\23\20\0\1\24"+
+    "\7\0\2\12\1\0\4\12\1\0\1\25\20\12\1\26"+
+    "\1\4\2\12\2\26\1\4\1\25\1\26\17\12\1\27"+
+    "\1\17\2\12\1\27\1\15\1\17\1\25\1\15\17\12"+
+    "\1\30\26\12\1\0\1\4\1\17\2\0\1\4\2\17"+
+    "\1\0\1\17\16\0\3\31\1\32\24\31\1\21\2\0"+
+    "\2\21\1\0\1\21\1\0\20\21\1\22\2\0\3\22"+
+    "\2\0\1\22\1\0\1\22\1\0\1\33\13\22\16\23"+
+    "\1\34\11\23\17\0\1\35\10\0\1\12\1\27\1\4"+
+    "\2\12\2\27\1\4\1\25\1\27\25\12\1\0\1\25"+
+    "\17\12\3\31\1\36\24\31\3\37\1\40\1\41\23\37"+
+    "\1\0\1\42\1\43\46\0\1\44\6\0\3\31\1\36"+
+    "\1\45\23\31\3\37\1\40\27\37\1\46\1\47\23\37"+
+    "\1\50\1\51\1\52\1\53\24\50\2\0\1\43\47\0"+
+    "\1\54\6\0\1\55\1\56\25\0\3\37\1\46\1\45"+
+    "\23\37\1\0\1\57\1\60\25\0\3\50\1\53\26\50"+
+    "\1\52\1\53\27\50\1\61\1\47\23\50\23\0\1\62"+
+    "\6\0\1\56\27\0\1\60\25\0\3\50\1\61\1\0"+
+    "\23\50\24\0\1\63\30\0\1\64\30\0\1\65\30\0"+
+    "\1\66";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[200];
+    int [] result = new int[1056];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -176,11 +193,13 @@ class JiroLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\5\1\1\11\6\1\1\0\1\1\1\0\4\1"+
-    "\1\11\3\1";
+    "\2\0\1\11\2\1\1\11\11\1\1\0\1\1\4\0"+
+    "\3\1\2\0\1\11\1\1\4\0\2\1\1\11\1\0"+
+    "\1\1\1\0\1\1\1\0\2\1\2\0\1\1\1\11"+
+    "\1\1\1\11\5\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[25];
+    int [] result = new int[54];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -494,33 +513,49 @@ class JiroLexer implements FlexLexer {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { yybegin(YYINITIAL); return JiroTypes.KEY;
+            { return TokenType.BAD_CHARACTER;
             }
-          case 8: break;
+          case 12: break;
           case 2: 
             { yybegin(YYINITIAL); return TokenType.WHITE_SPACE;
             }
-          case 9: break;
+          case 13: break;
           case 3: 
-            { return TokenType.BAD_CHARACTER;
-            }
-          case 10: break;
-          case 4: 
             { yybegin(WAITING_VALUE); return JiroTypes.SEPARATOR;
             }
-          case 11: break;
-          case 5: 
+          case 14: break;
+          case 4: 
             { yybegin(YYINITIAL); return JiroTypes.VALUE;
             }
-          case 12: break;
-          case 6: 
+          case 15: break;
+          case 5: 
             { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE;
             }
-          case 13: break;
-          case 7: 
-            { yybegin(YYINITIAL); return JiroTypes.COMMENT;
+          case 16: break;
+          case 6: 
+            { yybegin(YYINITIAL); return JiroTypes.LINE_COMMENT;
             }
-          case 14: break;
+          case 17: break;
+          case 7: 
+            { yybegin(YYINITIAL); return JiroTypes.BRACKETS1;
+            }
+          case 18: break;
+          case 8: 
+            { yybegin(YYINITIAL); return JiroTypes.BRACKETS2;
+            }
+          case 19: break;
+          case 9: 
+            { yybegin(YYINITIAL); return JiroTypes.BLOCK_COMMENT;
+            }
+          case 20: break;
+          case 10: 
+            { yybegin(YYINITIAL); return JiroTypes.DOC_COMMENT;
+            }
+          case 21: break;
+          case 11: 
+            { yybegin(YYINITIAL); return JiroTypes.SWITCH;
+            }
+          case 22: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }
