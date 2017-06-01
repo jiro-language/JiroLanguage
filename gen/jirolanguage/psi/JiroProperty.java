@@ -7,8 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JiroProperty extends PsiElement {
 
-  String getKey();
-
-  String getValue();
-
 }
