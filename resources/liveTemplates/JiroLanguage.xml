@@ -1,7 +1,5 @@
 <templateSet group="Jiro Language">
-    <template name="[" value="[$TEXT$]($LINK$)$END$" description="New link reference." toReformat="false" toShortenFQNames="false">
-        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
-        <variable name="LINK" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <template name="jiro" value="二郎$END$" description="二郎" toReformat="false" toShortenFQNames="false">
         <context>
             <option name="JIRO_LANGUAGE" value="true" />
         </context>
