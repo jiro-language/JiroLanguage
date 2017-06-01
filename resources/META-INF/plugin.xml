@@ -30,6 +30,8 @@
     <lang.parserDefinition language="JiroLanguage" implementationClass="jirolanguage.JiroParserDefinition"/>
     <lang.syntaxHighlighterFactory key="JiroLanguage" implementationClass="jirolanguage.JiroSyntaxHighlighterFactory"/>
     <colorSettingsPage implementation="jirolanguage.JiroColorSettingsPage"/>
+    <defaultLiveTemplatesProvider implementation="jirolanguage.liveTemplate.JiroTemplateProvider"/>
+    <liveTemplateContext implementation="jirolanguage.liveTemplate.JiroContext"/>
   </extensions>
 
   <actions>
