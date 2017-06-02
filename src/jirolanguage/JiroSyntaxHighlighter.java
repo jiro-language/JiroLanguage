@@ -18,10 +18,8 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey SEPARATOR =
             createTextAttributesKey("JIRO_SEPARATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN);
-    public static final TextAttributesKey JIRO =
-            createTextAttributesKey("JIRO_JIRO", DefaultLanguageHighlighterColors.KEYWORD);
-    public static final TextAttributesKey VALUE =
-            createTextAttributesKey("JIRO_VALUE", DefaultLanguageHighlighterColors.STRING);
+    public static final TextAttributesKey KEYWORD =
+            createTextAttributesKey("JIRO_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey BRACKETS =
             createTextAttributesKey("JIRO_BRACKETS", DefaultLanguageHighlighterColors.BRACKETS);
     public static final TextAttributesKey LINE_COMMENT =
@@ -30,14 +28,13 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
             createTextAttributesKey("JIRO_DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT);
     public static final TextAttributesKey BLOCK_COMMENT =
             createTextAttributesKey("JIRO_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
-    public static final TextAttributesKey BAD_CHARACTER =
-            createTextAttributesKey("JIRO_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
+//    public static final TextAttributesKey BAD_CHARACTER =
+//            createTextAttributesKey("JIRO_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
-    private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
+//    private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
     private static final TextAttributesKey[] SEPARATOR_KEYS = new TextAttributesKey[]{SEPARATOR};
-    private static final TextAttributesKey[] JIRO_KEYS = new TextAttributesKey[]{JIRO};
+    private static final TextAttributesKey[] KEYWORD_KEYS = new TextAttributesKey[]{KEYWORD};
     private static final TextAttributesKey[] BRACKETS_KEYS = new TextAttributesKey[]{BRACKETS};
-    private static final TextAttributesKey[] VALUE_KEYS = new TextAttributesKey[]{VALUE};
     private static final TextAttributesKey[] LINE_COMMENT_KEYS = new TextAttributesKey[]{LINE_COMMENT};
     private static final TextAttributesKey[] DOC_COMMENT_KEYS = new TextAttributesKey[]{DOC_COMMENT};
     private static final TextAttributesKey[] BLOCK_COMMENT_KEYS = new TextAttributesKey[]{BLOCK_COMMENT};
@@ -54,8 +51,10 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
         if (tokenType.equals(JiroTypes.SEPARATOR)) {
             return SEPARATOR_KEYS;
-        } else if (tokenType.equals(JiroTypes.VALUE)) {
-            return VALUE_KEYS;
+        } else if (tokenType.equals(JiroTypes.SWITCH)) {
+            return KEYWORD_KEYS;
+        } else if (tokenType.equals(JiroTypes.VAR)) {
+            return KEYWORD_KEYS;
         } else if (tokenType.equals(JiroTypes.BRACKETS1)) {
             return BRACKETS_KEYS;
         } else if (tokenType.equals(JiroTypes.BRACKETS2)) {
@@ -66,10 +65,8 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
             return DOC_COMMENT_KEYS;
         } else if (tokenType.equals(JiroTypes.BLOCK_COMMENT)) {
             return BLOCK_COMMENT_KEYS;
-        } else if (tokenType.equals(JiroTypes.SWITCH)) {
-            return JIRO_KEYS;
-        } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
-            return BAD_CHAR_KEYS;
+//        } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
+//            return BAD_CHAR_KEYS;
         } else {
             return EMPTY_KEYS;
         }

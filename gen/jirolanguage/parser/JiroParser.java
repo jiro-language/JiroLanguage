@@ -65,89 +65,18 @@ public class JiroParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (SEPARATOR VALUE?) | (SWITCH WHITE_SPACE? BRACKETS1 WHITE_SPACE? BRACKETS2) | (WHITE_SPACE? BRACKETS1 WHITE_SPACE?) | BRACKETS2
+  // VAR | SWITCH | BRACKETS1 | BRACKETS2 | SEPARATOR
   public static boolean property(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, PROPERTY, "<property>");
-    r = property_0(b, l + 1);
-    if (!r) r = property_1(b, l + 1);
-    if (!r) r = property_2(b, l + 1);
+    r = consumeToken(b, VAR);
+    if (!r) r = consumeToken(b, SWITCH);
+    if (!r) r = consumeToken(b, BRACKETS1);
     if (!r) r = consumeToken(b, BRACKETS2);
+    if (!r) r = consumeToken(b, SEPARATOR);
     exit_section_(b, l, m, r, false, null);
     return r;
-  }
-
-  // SEPARATOR VALUE?
-  private static boolean property_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_0")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, SEPARATOR);
-    r = r && property_0_1(b, l + 1);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // VALUE?
-  private static boolean property_0_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_0_1")) return false;
-    consumeToken(b, VALUE);
-    return true;
-  }
-
-  // SWITCH WHITE_SPACE? BRACKETS1 WHITE_SPACE? BRACKETS2
-  private static boolean property_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_1")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, SWITCH);
-    r = r && property_1_1(b, l + 1);
-    r = r && consumeToken(b, BRACKETS1);
-    r = r && property_1_3(b, l + 1);
-    r = r && consumeToken(b, BRACKETS2);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // WHITE_SPACE?
-  private static boolean property_1_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_1_1")) return false;
-    consumeToken(b, WHITE_SPACE);
-    return true;
-  }
-
-  // WHITE_SPACE?
-  private static boolean property_1_3(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_1_3")) return false;
-    consumeToken(b, WHITE_SPACE);
-    return true;
-  }
-
-  // WHITE_SPACE? BRACKETS1 WHITE_SPACE?
-  private static boolean property_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_2")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = property_2_0(b, l + 1);
-    r = r && consumeToken(b, BRACKETS1);
-    r = r && property_2_2(b, l + 1);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // WHITE_SPACE?
-  private static boolean property_2_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_2_0")) return false;
-    consumeToken(b, WHITE_SPACE);
-    return true;
-  }
-
-  // WHITE_SPACE?
-  private static boolean property_2_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "property_2_2")) return false;
-    consumeToken(b, WHITE_SPACE);
-    return true;
   }
 
 }

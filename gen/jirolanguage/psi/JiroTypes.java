@@ -18,8 +18,7 @@ public interface JiroTypes {
   IElementType LINE_COMMENT = new JiroTokenType("LINE_COMMENT");
   IElementType SEPARATOR = new JiroTokenType("SEPARATOR");
   IElementType SWITCH = new JiroTokenType("SWITCH");
-  IElementType VALUE = new JiroTokenType("VALUE");
-  IElementType WHITE_SPACE = new JiroTokenType("WHITE_SPACE");
+  IElementType VAR = new JiroTokenType("VAR");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {

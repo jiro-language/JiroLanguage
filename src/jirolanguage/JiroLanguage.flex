@@ -15,32 +15,28 @@ import com.intellij.psi.TokenType;
 %eof{  return;
 %eof}
 
-LINE_TERMINATOR = \r|\n|\r\n
+LINE_TERMINATOR = [\r\n(\r\n)]
 COMMENT_CONTENT = ( [^*] | \*+ [^/*] )*
 
 CRLF = \R
 WHITE_SPACE = [\ \n\t\f]
-FIRST_VALUE_CHARACTER = [^ \n\f\\] | "\\"{CRLF} | "\\".
-VALUE_CHARACTER = [^\n\f\\] | "\\"{CRLF} | "\\".
-LINE_COMMENT = "//".*
+SEPARATOR = [:=]
+LINE_COMMENT = "//".* {LINE_TERMINATOR}?
 DOC_COMMENT = "/**" {COMMENT_CONTENT} "*/" {LINE_TERMINATOR}?
 BLOCK_COMMENT = ("/*"([^*]+|[*]+[^/*])*[*]*"*/") {LINE_TERMINATOR}?
-SEPARATOR = [:=]
-BRACKETS1 = "(" [^\r\n(\r\n\) \n\t\f]+ ")"
+BRACKETS1 = "(" [^\r\n(\r\n)\ \n\t\f")"]+ ")"
 BRACKETS2 = "{" [^"}"]+ "}" {LINE_TERMINATOR}?
-//NUMBER = [0-9]+
 
 %state WAITING_VALUE
 
 %%
 
 <YYINITIAL> "ニンニク入れますか？"                             { yybegin(YYINITIAL); return JiroTypes.SWITCH; }
+<YYINITIAL> "丼"                                            { yybegin(YYINITIAL); return JiroTypes.VAR; }
 
 <YYINITIAL> {LINE_COMMENT}                                  { yybegin(YYINITIAL); return JiroTypes.LINE_COMMENT; }
 <YYINITIAL> {DOC_COMMENT}                                   { yybegin(YYINITIAL); return JiroTypes.DOC_COMMENT; }
 <YYINITIAL> {BLOCK_COMMENT}                                 { yybegin(YYINITIAL); return JiroTypes.BLOCK_COMMENT; }
-
-//<YYINITIAL> {NUMBER}                                        { yybegin(YYINITIAL); return JiroTypes.NUMBER; }
 
 <YYINITIAL> {BRACKETS1}                                     { yybegin(YYINITIAL); return JiroTypes.BRACKETS1; }
 <YYINITIAL> {BRACKETS2}                                     { yybegin(YYINITIAL); return JiroTypes.BRACKETS2; }
@@ -50,8 +46,6 @@ BRACKETS2 = "{" [^"}"]+ "}" {LINE_TERMINATOR}?
 <WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+               { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
 
 <WAITING_VALUE> {WHITE_SPACE}+                              { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE; }
-
-<WAITING_VALUE> {FIRST_VALUE_CHARACTER}{VALUE_CHARACTER}*   { yybegin(YYINITIAL); return JiroTypes.VALUE; }
 
 ({CRLF}|{WHITE_SPACE})+                                     { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
 

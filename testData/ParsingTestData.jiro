@@ -1,16 +1,12 @@
-// 二郎言語
-/*
-二郎言語
-*/
 /**
  * 二郎言語
  */
-website = http://en.wikipedia.org/
-message = Welcome to \
-          Wikipedia!
-key = This is the value that could be looked up with the key "key with spaces".
-tab : \u0009
+丼 jiro = "マシマシ"
 
+// switch
 ニンニク入れますか？ (var) {
-
 }
+
+/*
+ * 二郎言語
+ */
