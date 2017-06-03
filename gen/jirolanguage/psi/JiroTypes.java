@@ -35,6 +35,7 @@ public interface JiroTypes {
   IElementType SEMICOLON = new JiroTokenType("SEMICOLON");
   IElementType SEPARATOR = new JiroTokenType("SEPARATOR");
   IElementType SWITCH = new JiroTokenType("SWITCH");
+  IElementType SWITCH_VALUE = new JiroTokenType("SWITCH_VALUE");
   IElementType TRUE = new JiroTokenType("TRUE");
   IElementType VALUE = new JiroTokenType("VALUE");
 

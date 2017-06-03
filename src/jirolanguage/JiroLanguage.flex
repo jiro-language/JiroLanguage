@@ -27,19 +27,21 @@ BRACKETS = "(" [^\r\n(\r\n)\ \n\t\f")"]+ ")"
 IDENT = [a-z][a-zA-Z0-9]*
 KEY_CHARACTER=[^"二"\ \n\t\f\\]
 VALUE_CHARACTER=[^";"\ \n\t\f\\]
+SWITCH_VALUE = {WHITE_SPACE}*[0-9]+:
 
 %state WAITING_VALUE
 
 %%
 
 <YYINITIAL> "ニンニク入れますか"                              { yybegin(YYINITIAL); return JiroTypes.SWITCH; }
-<YYINITIAL> "ニンニク"                                      { yybegin(YYINITIAL); return JiroTypes.CASE1; }
-<YYINITIAL> "ヤサイ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE2; }
-<YYINITIAL> "アブラ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE3; }
-<YYINITIAL> "カラメ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE4; }
+<YYINITIAL> "ニンニク"                                      { yybegin(WAITING_VALUE); return JiroTypes.CASE1; }
+<YYINITIAL> "ヤサイ"                                        { yybegin(WAITING_VALUE); return JiroTypes.CASE2; }
+<YYINITIAL> "アブラ"                                        { yybegin(WAITING_VALUE); return JiroTypes.CASE3; }
+<YYINITIAL> "カラメ"                                        { yybegin(WAITING_VALUE); return JiroTypes.CASE4; }
 <YYINITIAL> "そのままで"                                     { yybegin(YYINITIAL); return JiroTypes.DEFAULT; }
 <YYINITIAL> "退店"                                          { yybegin(YYINITIAL); return JiroTypes.BREAK; }
 <YYINITIAL> "並びなおし"                                     { yybegin(YYINITIAL); return JiroTypes.CONTINUE; }
+<WAITING_VALUE> {SWITCH_VALUE}                              { yybegin(YYINITIAL); return JiroTypes.SWITCH_VALUE; }
 
 <YYINITIAL> "コール"                                        { yybegin(YYINITIAL); return JiroTypes.CONSOLE_LOG; }
 <YYINITIAL> "トッピング"                                     { yybegin(YYINITIAL); return JiroTypes.FUNCTION; }
