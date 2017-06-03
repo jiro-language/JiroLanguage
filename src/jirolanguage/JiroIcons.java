@@ -9,7 +9,6 @@ import javax.swing.*;
  */
 public class JiroIcons {
 
-    // TODO: 仮のアイコン
-    public static final Icon FILE = IconLoader.getIcon("/jirolanguage/icons/jar-gray.png");
+    public static final Icon FILE = IconLoader.getIcon("/jirolanguage/icons/jiro-yellow.png");
 
 }
