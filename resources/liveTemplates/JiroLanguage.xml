@@ -30,7 +30,7 @@
             <option name="JIRO_LANGUAGE" value="true" />
         </context>
     </template>
-    <template name="console.log" value="コール($END$)" description="二郎" toReformat="true" toShortenFQNames="true">
+    <template name="console.log" value="コール($END$);" description="二郎" toReformat="true" toShortenFQNames="true">
         <context>
             <option name="JIRO_LANGUAGE" value="true" />
         </context>
