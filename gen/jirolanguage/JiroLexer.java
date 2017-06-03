@@ -520,7 +520,7 @@ class JiroLexer implements FlexLexer {
             }
           case 20: break;
           case 3: 
-            { yybegin(YYINITIAL); return JiroTypes.VAR;
+            { yybegin(YYINITIAL); return JiroTypes.LET;
             }
           case 21: break;
           case 4: 

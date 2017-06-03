@@ -29,7 +29,7 @@ BRACKETS = "(" [^\r\n(\r\n)\ \n\t\f")"]+ ")"
 
 %%
 
-<YYINITIAL> "丼"                                           { yybegin(YYINITIAL); return JiroTypes.VAR; }
+<YYINITIAL> "丼"                                           { yybegin(YYINITIAL); return JiroTypes.LET; }
 
 <YYINITIAL> "ニンニク入れますか？"                            { yybegin(YYINITIAL); return JiroTypes.SWITCH; }
 <YYINITIAL> "ニンニク"                                      { yybegin(YYINITIAL); return JiroTypes.CASE1; }

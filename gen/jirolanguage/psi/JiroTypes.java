@@ -21,11 +21,11 @@ public interface JiroTypes {
   IElementType CRLF = new JiroTokenType("CRLF");
   IElementType DEFAULT = new JiroTokenType("DEFAULT");
   IElementType DOC_COMMENT = new JiroTokenType("DOC_COMMENT");
+  IElementType LET = new JiroTokenType("LET");
   IElementType LINE_COMMENT = new JiroTokenType("LINE_COMMENT");
   IElementType SEMICOLON = new JiroTokenType("SEMICOLON");
   IElementType SEPARATOR = new JiroTokenType("SEPARATOR");
   IElementType SWITCH = new JiroTokenType("SWITCH");
-  IElementType VAR = new JiroTokenType("VAR");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {

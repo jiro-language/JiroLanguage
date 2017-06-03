@@ -65,12 +65,12 @@ public class JiroParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // VAR | SWITCH | CASE1 | CASE2 | CASE3 | CASE4 | DEFAULT | BREAK | BRACKETS | SEPARATOR | CONSOLE_LOG | SEMICOLON
+  // LET | SWITCH | CASE1 | CASE2 | CASE3 | CASE4 | DEFAULT | BREAK | BRACKETS | SEPARATOR | CONSOLE_LOG | SEMICOLON
   public static boolean property(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, PROPERTY, "<property>");
-    r = consumeToken(b, VAR);
+    r = consumeToken(b, LET);
     if (!r) r = consumeToken(b, SWITCH);
     if (!r) r = consumeToken(b, CASE1);
     if (!r) r = consumeToken(b, CASE2);

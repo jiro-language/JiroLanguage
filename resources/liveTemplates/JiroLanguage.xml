@@ -30,6 +30,11 @@
             <option name="JIRO_LANGUAGE" value="true" />
         </context>
     </template>
+    <template name="let" value="丼 " description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
 
     <!--default-->
     <template name="{" value="{$END$}" description="{}" toReformat="true" toShortenFQNames="true">
