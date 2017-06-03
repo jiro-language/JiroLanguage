@@ -11,14 +11,21 @@ public interface JiroTypes {
   IElementType PROPERTY = new JiroElementType("PROPERTY");
 
   IElementType BLOCK_COMMENT = new JiroTokenType("BLOCK_COMMENT");
-  IElementType BRACKETS1 = new JiroTokenType("BRACKETS1");
-  IElementType BRACKETS2 = new JiroTokenType("BRACKETS2");
+  IElementType BRACKETS = new JiroTokenType("BRACKETS");
+  IElementType BREAK = new JiroTokenType("BREAK");
+  IElementType CASE1 = new JiroTokenType("CASE1");
+  IElementType CASE2 = new JiroTokenType("CASE2");
+  IElementType CASE3 = new JiroTokenType("CASE3");
+  IElementType CASE4 = new JiroTokenType("CASE4");
+  IElementType CONSOLE_LOG = new JiroTokenType("CONSOLE_LOG");
   IElementType CRLF = new JiroTokenType("CRLF");
+  IElementType DEFAULT = new JiroTokenType("DEFAULT");
   IElementType DOC_COMMENT = new JiroTokenType("DOC_COMMENT");
+  IElementType LET = new JiroTokenType("LET");
   IElementType LINE_COMMENT = new JiroTokenType("LINE_COMMENT");
+  IElementType SEMICOLON = new JiroTokenType("SEMICOLON");
   IElementType SEPARATOR = new JiroTokenType("SEPARATOR");
   IElementType SWITCH = new JiroTokenType("SWITCH");
-  IElementType VAR = new JiroTokenType("VAR");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
