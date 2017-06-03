@@ -65,24 +65,53 @@ public class JiroParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LET | SWITCH | CASE1 | CASE2 | CASE3 | CASE4 | DEFAULT | BREAK | BRACKETS | SEPARATOR | CONSOLE_LOG | SEMICOLON
+  // SWITCH | CASE1 | CASE2 | CASE3 | CASE4 | DEFAULT | BREAK | CONTINUE | BRACKETS | CONSOLE_LOG | SEMICOLON | FUNCTION | RETURN | BRACKETS_LEFT | BRACKETS_RIGHT | INCREMENT | DECREMENT | TRUE | FALSE | (LET KEY) | (SEPARATOR  VALUE)
   public static boolean property(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, PROPERTY, "<property>");
-    r = consumeToken(b, LET);
-    if (!r) r = consumeToken(b, SWITCH);
+    r = consumeToken(b, SWITCH);
     if (!r) r = consumeToken(b, CASE1);
     if (!r) r = consumeToken(b, CASE2);
     if (!r) r = consumeToken(b, CASE3);
     if (!r) r = consumeToken(b, CASE4);
     if (!r) r = consumeToken(b, DEFAULT);
     if (!r) r = consumeToken(b, BREAK);
+    if (!r) r = consumeToken(b, CONTINUE);
     if (!r) r = consumeToken(b, BRACKETS);
-    if (!r) r = consumeToken(b, SEPARATOR);
     if (!r) r = consumeToken(b, CONSOLE_LOG);
     if (!r) r = consumeToken(b, SEMICOLON);
+    if (!r) r = consumeToken(b, FUNCTION);
+    if (!r) r = consumeToken(b, RETURN);
+    if (!r) r = consumeToken(b, BRACKETS_LEFT);
+    if (!r) r = consumeToken(b, BRACKETS_RIGHT);
+    if (!r) r = consumeToken(b, INCREMENT);
+    if (!r) r = consumeToken(b, DECREMENT);
+    if (!r) r = consumeToken(b, TRUE);
+    if (!r) r = consumeToken(b, FALSE);
+    if (!r) r = property_19(b, l + 1);
+    if (!r) r = property_20(b, l + 1);
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // LET KEY
+  private static boolean property_19(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "property_19")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, LET, KEY);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // SEPARATOR  VALUE
+  private static boolean property_20(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "property_20")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, SEPARATOR, VALUE);
+    exit_section_(b, m, null, r);
     return r;
   }
 

@@ -5,7 +5,7 @@
             <option name="JIRO_LANGUAGE" value="true" />
         </context>
     </template>
-    <template name="switch" value="ニンニク入れますか？ ($VAR$) {&#10;  ニンニク $VAL1$:$END$&#10;  ヤサイ $VAL2$:&#10;  アブラ $VAL3$:&#10;  カラメ $VAL4$:&#10;  そのままで:&#10;}" description="二郎" toReformat="true" toShortenFQNames="true">
+    <template name="switch" value="ニンニク入れますか ($VAR$) {&#10;  ニンニク $VAL1$:$END$&#10;  ヤサイ $VAL2$:&#10;  アブラ $VAL3$:&#10;  カラメ $VAL4$:&#10;  そのままで:&#10;}" description="二郎" toReformat="true" toShortenFQNames="true">
         <variable name="VAR" expression="" defaultValue="" alwaysStopAt="true" />
         <variable name="VAL1" expression="" defaultValue="" alwaysStopAt="true" />
         <variable name="VAL2" expression="" defaultValue="" alwaysStopAt="true" />
@@ -13,6 +13,11 @@
         <variable name="VAL4" expression="" defaultValue="" alwaysStopAt="true" />
         <context>
            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="continue" value="並びなおし;" description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
         </context>
     </template>
     <template name="break" value="退店;" description="二郎" toReformat="true" toShortenFQNames="true">
@@ -31,6 +36,36 @@
         </context>
     </template>
     <template name="let" value="丼 " description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="function" value="トッピング " description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="true" value="あり" description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="false" value="ぬき" description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="return" value="完食 " description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="++" value=" マシマシ" description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="--" value=" 少なめ" description="二郎" toReformat="true" toShortenFQNames="true">
         <context>
             <option name="JIRO_LANGUAGE" value="true" />
         </context>
