@@ -24,22 +24,27 @@ SEPARATOR = [:=]
 LINE_COMMENT = "//".* {LINE_TERMINATOR}?
 DOC_COMMENT = "/**" {COMMENT_CONTENT} "*/" {LINE_TERMINATOR}?
 BLOCK_COMMENT = ("/*"([^*]+|[*]+[^/*])*[*]*"*/") {LINE_TERMINATOR}?
-BRACKETS1 = "(" [^\r\n(\r\n)\ \n\t\f")"]+ ")"
-BRACKETS2 = "{" [^"}"]+ "}" {LINE_TERMINATOR}?
+BRACKETS = "(" [^\r\n(\r\n)\ \n\t\f")"]+ ")"
 
 %state WAITING_VALUE
 
 %%
 
-<YYINITIAL> "ニンニク入れますか？"                             { yybegin(YYINITIAL); return JiroTypes.SWITCH; }
 <YYINITIAL> "丼"                                            { yybegin(YYINITIAL); return JiroTypes.VAR; }
+
+<YYINITIAL> "ニンニク入れますか？"                             { yybegin(YYINITIAL); return JiroTypes.SWITCH; }
+<YYINITIAL> "ニンニク"                                       { yybegin(YYINITIAL); return JiroTypes.CASE1; }
+<YYINITIAL> "ヤサイ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE2; }
+<YYINITIAL> "アブラ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE3; }
+<YYINITIAL> "カラメ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE4; }
+<YYINITIAL> "そのままで"                                     { yybegin(YYINITIAL); return JiroTypes.DEFAULT; }
+<YYINITIAL> "閉店"                                          { yybegin(YYINITIAL); return JiroTypes.BREAK; }
 
 <YYINITIAL> {LINE_COMMENT}                                  { yybegin(YYINITIAL); return JiroTypes.LINE_COMMENT; }
 <YYINITIAL> {DOC_COMMENT}                                   { yybegin(YYINITIAL); return JiroTypes.DOC_COMMENT; }
 <YYINITIAL> {BLOCK_COMMENT}                                 { yybegin(YYINITIAL); return JiroTypes.BLOCK_COMMENT; }
 
-<YYINITIAL> {BRACKETS1}                                     { yybegin(YYINITIAL); return JiroTypes.BRACKETS1; }
-<YYINITIAL> {BRACKETS2}                                     { yybegin(YYINITIAL); return JiroTypes.BRACKETS2; }
+<YYINITIAL> {BRACKETS}                                     { yybegin(YYINITIAL); return JiroTypes.BRACKETS; }
 
 <YYINITIAL> {SEPARATOR}                                     { yybegin(WAITING_VALUE); return JiroTypes.SEPARATOR; }
 

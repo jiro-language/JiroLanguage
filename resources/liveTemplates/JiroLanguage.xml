@@ -1,5 +1,28 @@
 <templateSet group="Jiro Language">
-    <template name="jiro" value="二郎$END$" description="二郎" toReformat="false" toShortenFQNames="false">
+    <!--jiro-->
+    <template name="jiro" value="二郎" description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="switch" value="ニンニク入れますか？ ($VAR$) {&#10;  ニンニク $VAL1$:$END$&#10;  ヤサイ $VAL2$:&#10;  アブラ $VAL3$:&#10;  カラメ $VAL4$:&#10;  そのままで:&#10;}" description="二郎" toReformat="true" toShortenFQNames="true">
+        <variable name="VAR" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="VAL1" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="VAL2" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="VAL3" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="VAL4" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+           <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+    <template name="break" value="退店;" description="二郎" toReformat="true" toShortenFQNames="true">
+        <context>
+            <option name="JIRO_LANGUAGE" value="true" />
+        </context>
+    </template>
+
+    <!--default-->
+    <template name="{" value="{$END$&#10;}" description="{}" toReformat="true" toShortenFQNames="true">
         <context>
             <option name="JIRO_LANGUAGE" value="true" />
         </context>

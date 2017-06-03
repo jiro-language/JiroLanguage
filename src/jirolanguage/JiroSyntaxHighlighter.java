@@ -51,13 +51,17 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
         if (tokenType.equals(JiroTypes.SEPARATOR)) {
             return SEPARATOR_KEYS;
-        } else if (tokenType.equals(JiroTypes.SWITCH)) {
+        } else if (tokenType.equals(JiroTypes.SWITCH)
+                || tokenType.equals(JiroTypes.CASE1)
+                || tokenType.equals(JiroTypes.CASE2)
+                || tokenType.equals(JiroTypes.CASE3)
+                || tokenType.equals(JiroTypes.CASE4)
+                || tokenType.equals(JiroTypes.DEFAULT)
+                || tokenType.equals(JiroTypes.BREAK)) {
             return KEYWORD_KEYS;
         } else if (tokenType.equals(JiroTypes.VAR)) {
             return KEYWORD_KEYS;
-        } else if (tokenType.equals(JiroTypes.BRACKETS1)) {
-            return BRACKETS_KEYS;
-        } else if (tokenType.equals(JiroTypes.BRACKETS2)) {
+        } else if (tokenType.equals(JiroTypes.BRACKETS)) {
             return BRACKETS_KEYS;
         } else if (tokenType.equals(JiroTypes.LINE_COMMENT)) {
             return LINE_COMMENT_KEYS;
