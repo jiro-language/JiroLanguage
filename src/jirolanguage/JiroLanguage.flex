@@ -37,15 +37,19 @@ BRACKETS = "(" [^\r\n(\r\n)\ \n\t\f")"]+ ")"
 <YYINITIAL> "アブラ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE3; }
 <YYINITIAL> "カラメ"                                        { yybegin(YYINITIAL); return JiroTypes.CASE4; }
 <YYINITIAL> "そのままで"                                     { yybegin(YYINITIAL); return JiroTypes.DEFAULT; }
-<YYINITIAL> "閉店"                                          { yybegin(YYINITIAL); return JiroTypes.BREAK; }
+<YYINITIAL> "退店"                                          { yybegin(YYINITIAL); return JiroTypes.BREAK; }
 
 <YYINITIAL> "コール"                                        { yybegin(YYINITIAL); return JiroTypes.CONSOLE_LOG; }
+<YYINITIAL> "トッピング"                                     { yybegin(YYINITIAL); return JiroTypes.FUNCTION; }
+<YYINITIAL> "完飲"                                          { yybegin(YYINITIAL); return JiroTypes.RETURN; }
 
 <YYINITIAL> {LINE_COMMENT}                                  { yybegin(YYINITIAL); return JiroTypes.LINE_COMMENT; }
 <YYINITIAL> {DOC_COMMENT}                                   { yybegin(YYINITIAL); return JiroTypes.DOC_COMMENT; }
 <YYINITIAL> {BLOCK_COMMENT}                                 { yybegin(YYINITIAL); return JiroTypes.BLOCK_COMMENT; }
 
 <YYINITIAL> {BRACKETS}                                      { yybegin(YYINITIAL); return JiroTypes.BRACKETS; }
+<YYINITIAL> "{"                                             { yybegin(YYINITIAL); return JiroTypes.BRACKETS_LEFT; }
+<YYINITIAL> "}"                                             { yybegin(YYINITIAL); return JiroTypes.BRACKETS_RIGHT; }
 
 <YYINITIAL> ";"                                            { yybegin(YYINITIAL); return JiroTypes.SEMICOLON; }
 

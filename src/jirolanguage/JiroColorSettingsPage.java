@@ -15,7 +15,7 @@ public class JiroColorSettingsPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
             new AttributesDescriptor("Separator", JiroSyntaxHighlighter.SEPARATOR),
-            new AttributesDescriptor("Keyword", JiroSyntaxHighlighter.KEYWORD),
+            new AttributesDescriptor("Keyword", JiroSyntaxHighlighter.KEYWORD),  // 予約語 https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Reserved_Words
             new AttributesDescriptor("Line Comment", JiroSyntaxHighlighter.LINE_COMMENT),
             new AttributesDescriptor("Block Comment", JiroSyntaxHighlighter.BLOCK_COMMENT),
             new AttributesDescriptor("Doc Comment", JiroSyntaxHighlighter.DOC_COMMENT),

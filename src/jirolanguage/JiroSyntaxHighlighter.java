@@ -60,7 +60,9 @@ public class JiroSyntaxHighlighter extends SyntaxHighlighterBase {
                 || tokenType.equals(JiroTypes.BREAK)) {
             return KEYWORD_KEYS;
         } else if (tokenType.equals(JiroTypes.LET)
-                || tokenType.equals(JiroTypes.CONSOLE_LOG)) {
+                || tokenType.equals(JiroTypes.CONSOLE_LOG)
+                || tokenType.equals(JiroTypes.FUNCTION)
+                || tokenType.equals(JiroTypes.RETURN)) {
             return KEYWORD_KEYS;
         } else if (tokenType.equals(JiroTypes.BRACKETS)) {
             return BRACKETS_KEYS;

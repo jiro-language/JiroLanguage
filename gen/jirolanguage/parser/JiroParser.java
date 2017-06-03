@@ -65,7 +65,7 @@ public class JiroParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LET | SWITCH | CASE1 | CASE2 | CASE3 | CASE4 | DEFAULT | BREAK | BRACKETS | SEPARATOR | CONSOLE_LOG | SEMICOLON
+  // LET | SWITCH | CASE1 | CASE2 | CASE3 | CASE4 | DEFAULT | BREAK | BRACKETS | SEPARATOR | CONSOLE_LOG | SEMICOLON | FUNCTION | RETURN | BRACKETS_LEFT | BRACKETS_RIGHT
   public static boolean property(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property")) return false;
     boolean r;
@@ -82,6 +82,10 @@ public class JiroParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, SEPARATOR);
     if (!r) r = consumeToken(b, CONSOLE_LOG);
     if (!r) r = consumeToken(b, SEMICOLON);
+    if (!r) r = consumeToken(b, FUNCTION);
+    if (!r) r = consumeToken(b, RETURN);
+    if (!r) r = consumeToken(b, BRACKETS_LEFT);
+    if (!r) r = consumeToken(b, BRACKETS_RIGHT);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
